@@ -18,6 +18,7 @@ import { ExtrapagesModule } from './extrapages/extrapages.module';
 import { FakeBackendInterceptor } from './core/helpers/fake-backend';
 import { ErrorInterceptor } from './core/helpers/error.interceptor';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
+import { WebsiteRoutingModule } from './pages/website/website-routing.module';
 
 if (environment.defaultauth === 'firebase') {
   initFirebaseBackend(environment.firebaseConfig);
@@ -44,6 +45,7 @@ export function createTranslateLoader(http: HttpClient): any {
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    WebsiteRoutingModule,
     PagesModule,
     LayoutsModule,
     BrowserAnimationsModule,

@@ -93,6 +93,47 @@ export const MENU: MenuItem[] = [
             }
         ]
     },
+
+    {
+        id: 86,
+        label: 'MENUITEMS.WEBSITE.TEXT',
+        icon: 'grid',
+        subItems: [
+            {
+                id: 87,
+                label: 'MENUITEMS.WEBSITE.LIST.SHARED',
+                icon: 'bx-receipt',
+                subItems: [
+                    {
+                        id: 88,
+                        label: 'MENUITEMS.WEBSITE.LIST.NAVBAR',
+                        link: '/website/navbar',
+                        parentId: 87
+                    },
+                    {
+                        id: 89,
+                        label: 'MENUITEMS.WEBSITE.LIST.FOOTER',
+                        link: '/website/footer',
+                        parentId: 87
+                    },
+                ],
+
+            },
+            {
+                id: 90,
+                label: 'MENUITEMS.WEBSITE.LIST.HOME',
+                link: '/website/home',
+                parentId: 86
+            },
+            {
+                id: 91,
+                label: 'MENUITEMS.WEBSITE.LIST.SHARE',
+                link: '/website/share',
+                parentId: 86
+            },
+        ]
+
+    },
     {
         id: 16,
         label: 'MENUITEMS.AUTHENTICATION.TEXT',

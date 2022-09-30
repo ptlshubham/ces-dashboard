@@ -25,10 +25,10 @@ import { ChartModule } from './chart/chart.module';
 import { PagesRoutingModule } from './pages-routing.module';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { CoreModule } from '../core/core.module';
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     CommonModule,

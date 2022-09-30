@@ -1,0 +1,187 @@
+<div class="row">
+    <div class="col-xl-6 col-md-6" (click)="openNavbar()">
+        <!-- card -->
+        <div class="card card-h-100">
+            <!-- card body -->
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <span class="text-muted mb-3 lh-1 d-block text-truncate">Navbar</span>
+                    </div>
+                    <div class="col-6 text-end ml-md-auto" *ngIf="isNavbarOpen">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div><!-- end col -->
+
+    <div class="col-xl-6 col-md-6" (click)="openFooter()">
+        <!-- card -->
+        <div class="card card-h-100">
+            <!-- card body -->
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <span class="text-muted mb-3 lh-1 d-block text-truncate">Footer</span>
+                    </div>
+                    <div class="col-6 text-end ml-md-auto" *ngIf="isFooterOpen">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+                <!-- <div class="text-nowrap">
+                    <span class="badge bg-soft-danger text-danger">-29 Trades</span>
+                    <span class="ms-1 text-muted font-size-13">Since last week</span>
+                </div> -->
+            </div><!-- end card body -->
+        </div><!-- end card -->
+    </div><!-- end col-->
+
+
+</div><!-- end row-->
+
+<div class="row" *ngIf="isNavbarOpen">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body p-4">
+                <div>
+                    <h5 class="card-title mb-4">Validation Exampless</h5>
+                    <form [formGroup]="validationForm" (ngSubmit)="saveWebNavbarDetails()">
+                        <input type="hidden" />
+                        <div class="row">
+
+                            <div class="col-xl-4 col-md-6">
+                                <div class="form-group mb-3">
+                                    <label>Email</label>
+                                    <input type="email" formControlName="email"
+                                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control"
+                                        id="useremail" placeholder="Enter email">
+                                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.email.errors.required">Email is required</div>
+                                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-4 col-md-6">
+                                <div class="form-group mb-3">
+                                    <label>Phonenumber</label>
+                                    <input type=" number" formControlName="number"
+                                        [ngClass]="{ 'is-invalid': submitted && f.number.errors }" class="form-control"
+                                        id="phonenumber" placeholder="Enter number">
+                                    <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+                                        <div *ngIf="f.number.errors.required">Phonenumber is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                                <div class="form-group mb-3">
+                                    <label>Name (Collage/School)</label>
+                                    <input type="text" formControlName="name" class="form-control" id="name"
+                                        [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                                        placeholder="Enter Name of (Collage/School)">
+                                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.name.errors.required">Name (Collage/School) is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-4 col-md-6">
+                                <div class="form-group mb-3">
+                                    <label>Upload Logo</label>
+                                    <p style="color: red;">logo must be in 579*111 size</p>
+                                    <dropzone type="Upload" class="dropzone" [config]="config">
+                                    </dropzone>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                                <div class="form-group mb-3">
+                                    <label>Color picker</label>
+                                    <!-- <p style="color: red;">logo must be in 579*111 size</p> -->
+                                    <input type="color" class="form-control form-control-color mw-100"
+                                        id="example-color-input" value="#5156be" title="Choose your color">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="row justify-content-end">
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn btn-primary btn-round" (click)="saveWebNavbarDetails()">
+                                            <i class="fa fa-paper-plane" aria-hidden="true"></i> Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="isFooterOpen">
+    <app-pagetitle title="Footer"></app-pagetitle>
+    <div class="row">
+        <div class="card-body">
+            <div class="mt-4">
+                <!-- <h5 class="font-size-13 mb-2">Align Items Center</h5> -->
+                <div class="bg-soft-light p-3 text-center">
+                    <div class="row align-items-center" style="min-height: 6rem;">
+                        <div class="col-sm-3">
+                            <div class="mt-2 mt-sm-0">
+                                <code>col-sm-3</code>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="mt-2 mt-sm-0">
+                                <code>col-sm-3</code>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="mt-2 mt-sm-0">
+                                <code>col-sm-3</code>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="mt-2 mt-sm-0">
+                                <code>col-sm-3</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="card-body">
+            <div class="mt-4">
+                <!-- <h5 class="font-size-13 mb-2">Align Items Center</h5> -->
+                <div class="bg-soft-light p-3 text-center">
+                    <div class="row align-items-center" style="min-height: 6rem;">
+                        <div class="col-sm-4">
+                            <h4 class="card-title">Upload Logo</h4>
+                            <p style="color: red;">logo must be in 539*113 size</p>
+                            <form>
+                                <dropzone class="dropzone"></dropzone>
+                            </form>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="mt-2 mt-sm-0">
+                                <code>col-sm-4</code>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

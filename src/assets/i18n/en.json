@@ -98,6 +98,16 @@
       "TEXT": "Dashboard",
       "BADGE": "04"
     },
+    "WEBSITE": {
+      "TEXT": "Website",
+      "LIST": {
+        "SHARED": "Shared",
+        "NAVBAR": "Navbar",
+        "FOOTER": "Footer",
+        "HOME": "Home",
+        "SHARE": "Share"
+      }
+    },
     "APPS": {
       "TEXT": "Apps",
       "LIST": {
