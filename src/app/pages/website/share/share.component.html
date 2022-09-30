@@ -98,8 +98,9 @@
                                 <div class="form-group mb-3">
                                     <label>Color picker</label>
                                     <!-- <p style="color: red;">logo must be in 579*111 size</p> -->
-                                    <input type="color" class="form-control form-control-color mw-100"
-                                        id="example-color-input" value="#5156be" title="Choose your color">
+                                    <input type="color" class="form-control form-control-color mw-100" id="color"
+                                        name="color" [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="webNavModel.color" title="Choose your color">
                                 </div>
                             </div>
                         </div>
@@ -108,7 +109,8 @@
                             <div class="row">
                                 <div class="row justify-content-end">
                                     <div class="col-auto">
-                                        <button type="submit" class="btn btn-primary btn-round" (click)="saveWebNavbarDetails()">
+                                        <button type="submit" class="btn btn-primary btn-round"
+                                            (click)="saveWebNavbarDetails()">
                                             <i class="fa fa-paper-plane" aria-hidden="true"></i> Submit
                                         </button>
                                     </div>
@@ -182,6 +184,3 @@
         </div>
     </div>
 </div>
-
-
-

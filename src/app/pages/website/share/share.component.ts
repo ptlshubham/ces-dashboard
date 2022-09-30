@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, AbstractControl, FormArray, FormControl, ValidatorFn } from '@angular/forms';
 import { DropzoneComponent, DropzoneConfigInterface, DropzoneDirective } from 'ngx-dropzone-wrapper';
 import { WebNavbar } from 'src/app/core/models/web-navbar.model';
+import { WebBasicService } from 'src/app/core/services/web-basic.service';
 
 
 
@@ -35,7 +36,10 @@ export class ShareComponent implements OnInit {
   validationForm!: FormGroup;
 
 
-  constructor(public formBuilder: FormBuilder) { }
+  constructor(
+    public formBuilder: FormBuilder,
+    private webBasicService: WebBasicService
+  ) { }
 
   ngOnInit(): void {
     /**
@@ -56,17 +60,20 @@ export class ShareComponent implements OnInit {
   get f() { return this.validationForm.controls; }
 
   saveWebNavbarDetails() {
+    this.submitted = true;
+ 
     this.webNavModel.name = this.validationForm.value.name;
     this.webNavModel.email = this.validationForm.value.email;
     this.webNavModel.contact = this.validationForm.value.number;
     this.webNavModel.logo = this.validationForm.value.logo;
     debugger
-    this.submitted = true;
-
-    // stop here if form is invalid
+    this.webBasicService.saveWebNavbarList(this.webNavModel).subscribe((data: any) => {
+      this.webNav = data;
+    })
     if (this.validationForm.invalid) {
       return;
     }
+
   }
 
 

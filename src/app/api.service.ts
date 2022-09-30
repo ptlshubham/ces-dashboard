@@ -5,7 +5,7 @@ declare var $: any;
   providedIn: 'root'
 })
 export class ApiService {
-  public static HOST_URL: string = "http://localhost:8090";
+  public static HOST_URL: string = "http://localhost:8100";
   // public static HOST_URL: string = "http://31.220.59.174:4500";
 
   constructor(
@@ -17,6 +17,16 @@ export class ApiService {
       'Content-Type': 'application/json'
     })
   }
+  public static saveWebNavbarURL: string=ApiService.HOST_URL+'/admin/SaveWebNavbar';
+
+
+
+
+
+
+
+
+
   public static getUserLoginURL: string = ApiService.HOST_URL + '/admin/GetUsersLogin';
   public static updateLogoutDetailsURL: string = ApiService.HOST_URL + '/admin/UpdateLogoutDetails'
   public static saveServicesListURL: string = ApiService.HOST_URL + '/admin/SaveServicesList';
