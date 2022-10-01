@@ -18,6 +18,8 @@ export class ApiService {
     })
   }
   public static saveWebNavbarURL: string=ApiService.HOST_URL+'/admin/SaveWebNavbar';
+  public static getWebNavbarURL: string = ApiService.HOST_URL + '/admin/GetWebNavbar';
+
 
 
 
@@ -37,7 +39,6 @@ export class ApiService {
   public static removeEmployeeListURL: string = ApiService.HOST_URL + '/admin/RemoveEmployeeList/';
   public static saveCustomerListURL: string = ApiService.HOST_URL + '/admin/SaveCustomerList';
   public static saveLoginUserURL: string = ApiService.HOST_URL + '/authenticate/UserLogin';
-  public static getAllCustomerURL: string = ApiService.HOST_URL + '/admin/GetAllCustomer';
   public static saveAppointmentListURL: string = ApiService.HOST_URL + '/admin/SaveAppointmentList';
   public static getAllAppointmentURL: string = ApiService.HOST_URL + '/admin/GetAllAppointment';
   public static getViewAppointmentURL: string = ApiService.HOST_URL + '/admin/GetViewAppointment';

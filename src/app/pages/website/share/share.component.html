@@ -90,7 +90,8 @@
                                 <div class="form-group mb-3">
                                     <label>Upload Logo</label>
                                     <p style="color: red;">logo must be in 579*111 size</p>
-                                    <dropzone type="Upload" class="dropzone" [config]="config">
+                                    <dropzone type="Upload" class="dropzone" [config]="config"
+                                        [(ngModel)]="webNavModel.logo">
                                     </dropzone>
                                 </div>
                             </div>
