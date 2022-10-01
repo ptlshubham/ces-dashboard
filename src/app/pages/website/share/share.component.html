@@ -45,7 +45,7 @@
         <div class="card">
             <div class="card-body p-4">
                 <div>
-                    <h5 class="card-title mb-4">Validation Exampless</h5>
+                    <!-- <h5 class="card-title mb-4">Validation Exampless</h5> -->
                     <form [formGroup]="validationForm" (ngSubmit)="saveWebNavbarDetails()">
                         <input type="hidden" />
                         <div class="row">
@@ -118,6 +118,78 @@
                             </div>
                         </div>
                     </form>
+                    <div class="row">
+                        <div class="col-xl-12">
+                    
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Navbar Datatable</h4>
+                                    <!-- <p class="card-title-desc">Table cells in <code>&lt;tbody&gt;</code> inherit their
+                                        alignment from <code>&lt;table&gt;</code> and are aligned to the the top by
+                                        default. Use the vertical align classes to re-align where needed.</p> -->
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table align-middle mb-0">
+                    
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Email</th>
+                                                    <th>Phonenumber</th>
+                                                    <th>Name (Collage/School)</th>
+                                                    <th>Logo</th>
+                                                    <th>Color Code</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>sample@gmail.com</td>
+                                                    <td>9999999999</td>
+                                                    <td>SAMPLE</td>
+                                                    <td>......</td>
+                                                    <td>#342424</td>
+                                                    <!-- <td>
+                                                        <button type="button" class="btn btn-light btn-sm">View</button>
+                                                    </td> -->
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>sample@gmail.com</td>
+                                                    <td>9999999999</td>
+                                                    <td>SAMPLE</td>
+                                                    <td>......</td>
+                                                    <td>#342424</td>
+                                                    <!-- <td>
+                                                        <button type="button" class="btn btn-light btn-sm">View</button>
+                                                    </td> -->
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>sample@gmail.com</td>
+                                                    <td>9999999999</td>
+                                                    <td>SAMPLE</td>
+                                                    <td>......</td>
+                                                    <td>#342424</td>
+                                                    <!-- <td>
+                                                        <button type="button" class="btn btn-light btn-sm">View</button>
+                                                    </td> -->
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- end card body -->
+                            </div>
+                            <!-- end card -->
+                        </div>
+                        <!-- end col -->
+                    
+                    </div>
+                    <!-- end row -->
                 </div>
             </div>
         </div>
@@ -184,3 +256,5 @@
         </div>
     </div>
 </div>
+
+
