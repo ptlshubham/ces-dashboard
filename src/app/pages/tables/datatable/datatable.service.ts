@@ -15,7 +15,7 @@ interface SearchResult {
 interface State {
     page: number;
     pageSize: number;
-    searchTerm: string;
+    searchTerm: string; 
     sortColumn: SortColumn;
     sortDirection: SortDirection;
     startIndex: number;
