@@ -18,9 +18,9 @@ export class WebBasicService {
     saveWebNavbarList(admin: WebNavbar): Observable<any> {
         return this.httpClient.post<any>(ApiService.saveWebNavbarURL, admin);
     }
-    // getAllCustomerList(): Observable<Customer[]> {
-    //     return this.httpClient.get<any>(ApiService.getAllCustomerURL);
-    // }
+    getWebNavList(): Observable<WebNavbar[]> {
+        return this.httpClient.get<any>(ApiService.getWebNavbarURL);
+    }
     // saveAppointmentList(admin: any): Observable<any> {
     //     return this.httpClient.post<any>(ApiService.saveAppointmentListURL, admin);
     // }

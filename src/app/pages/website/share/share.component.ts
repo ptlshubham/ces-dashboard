@@ -39,9 +39,12 @@ export class ShareComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private webBasicService: WebBasicService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
+    this.getWebNavbarList();
+
     /**
      * BreadCrumb Set
      */
@@ -61,7 +64,7 @@ export class ShareComponent implements OnInit {
 
   saveWebNavbarDetails() {
     this.submitted = true;
- 
+
     this.webNavModel.name = this.validationForm.value.name;
     this.webNavModel.email = this.validationForm.value.email;
     this.webNavModel.contact = this.validationForm.value.number;
@@ -75,7 +78,14 @@ export class ShareComponent implements OnInit {
     }
 
   }
+  getWebNavbarList() {
+    debugger
+    this.webBasicService.getWebNavList().subscribe((data: any) => {
+      this.webNav = data;
+      debugger
+    });
 
+  }
 
 
 
