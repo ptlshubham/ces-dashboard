@@ -144,41 +144,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>sample@gmail.com</td>
-                                                    <td>9999999999</td>
-                                                    <td>SAMPLE</td>
-                                                    <td>......</td>
-                                                    <td>#342424</td>
+                                                <tr *ngFor="let item of webNav;let i = index">
+                                                    <th scope="row">{{i+1}}</th>
+                                                    <td>{{item.email}}</td>
+                                                    <td>{{item.contact}}</td>
+                                                    <td>{{item.name}}</td>
+                                                    <td>{{item.logo}}</td>
+                                                    <td>{{item.color}}</td>
                                                     <!-- <td>
                                                         <button type="button" class="btn btn-light btn-sm">View</button>
                                                     </td> -->
                                                 </tr>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>sample@gmail.com</td>
-                                                    <td>9999999999</td>
-                                                    <td>SAMPLE</td>
-                                                    <td>......</td>
-                                                    <td>#342424</td>
-                                                    <!-- <td>
-                                                        <button type="button" class="btn btn-light btn-sm">View</button>
-                                                    </td> -->
-                                                </tr>
-                                                
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>sample@gmail.com</td>
-                                                    <td>9999999999</td>
-                                                    <td>SAMPLE</td>
-                                                    <td>......</td>
-                                                    <td>#342424</td>
-                                                    <!-- <td>
-                                                        <button type="button" class="btn btn-light btn-sm">View</button>
-                                                    </td> -->
-                                                </tr>
-                                                
+                                               
                                             </tbody>
                                         </table>
                                     </div>
@@ -199,63 +176,18 @@
 <div *ngIf="isFooterOpen">
     <app-pagetitle title="Footer"></app-pagetitle>
     <div class="row">
-        <div class="card-body">
-            <div class="mt-4">
-                <!-- <h5 class="font-size-13 mb-2">Align Items Center</h5> -->
-                <div class="bg-soft-light p-3 text-center">
-                    <div class="row align-items-center" style="min-height: 6rem;">
-                        <div class="col-sm-3">
-                            <div class="mt-2 mt-sm-0">
-                                <code>col-sm-3</code>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mt-2 mt-sm-0">
-                                <code>col-sm-3</code>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mt-2 mt-sm-0">
-                                <code>col-sm-3</code>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="mt-2 mt-sm-0">
-                                <code>col-sm-3</code>
-                            </div>
-                        </div>
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body p-4">
+                    <div>
+                      
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="card-body">
-            <div class="mt-4">
-                <!-- <h5 class="font-size-13 mb-2">Align Items Center</h5> -->
-                <div class="bg-soft-light p-3 text-center">
-                    <div class="row align-items-center" style="min-height: 6rem;">
-                        <div class="col-sm-4">
-                            <h4 class="card-title">Upload Logo</h4>
-                            <p style="color: red;">logo must be in 539*113 size</p>
-                            <form>
-                                <dropzone class="dropzone"></dropzone>
-                            </form>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="mt-2 mt-sm-0">
-                                <code>col-sm-4</code>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 </div>
 
 

@@ -1,15 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, Validators, FormGroup, AbstractControl, FormArray, FormControl, ValidatorFn } from '@angular/forms';
-import { DropzoneComponent, DropzoneConfigInterface, DropzoneDirective } from 'ngx-dropzone-wrapper';
+import { Component, OnInit,} from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { WebNavbar } from 'src/app/core/models/web-navbar.model';
 import { WebBasicService } from 'src/app/core/services/web-basic.service';
-
-
 
 @Component({
   selector: 'app-share',
   templateUrl: './share.component.html',
-  styleUrls: ['./share.component.scss']
+  styleUrls: ['./share.component.scss'],
+  
 })
 export class ShareComponent implements OnInit {
 
@@ -38,7 +37,7 @@ export class ShareComponent implements OnInit {
 
   constructor(
     public formBuilder: FormBuilder,
-    private webBasicService: WebBasicService
+    private webBasicService: WebBasicService,
   ) {
   }
 
@@ -59,6 +58,8 @@ export class ShareComponent implements OnInit {
       logo: ['', Validators.required],
     });
     this.submit = false;
+
+  
   }
   get f() { return this.validationForm.controls; }
 
@@ -71,7 +72,10 @@ export class ShareComponent implements OnInit {
     this.webNavModel.logo = this.validationForm.value.logo;
     debugger
     this.webBasicService.saveWebNavbarList(this.webNavModel).subscribe((data: any) => {
-      this.webNav = data;
+      if(data == 'SUCESS'){
+        alert('data added sucessfully');
+        this.getWebNavbarList();
+      }
     })
     if (this.validationForm.invalid) {
       return;
@@ -81,16 +85,15 @@ export class ShareComponent implements OnInit {
   getWebNavbarList() {
     debugger
     this.webBasicService.getWebNavList().subscribe((data: any) => {
-      this.webNav = data;
+      debugger
+      if(data.length>0){
+        this.webNav = data;
+      }
+     
       debugger
     });
 
   }
-
-
-
-
-
   openNavbar() {
     this.isNavbarOpen = true;
     this.isFooterOpen = false;
@@ -99,5 +102,6 @@ export class ShareComponent implements OnInit {
     this.isNavbarOpen = false;
     this.isFooterOpen = true;
   }
+
 }
 
