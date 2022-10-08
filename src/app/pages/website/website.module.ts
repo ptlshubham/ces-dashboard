@@ -24,6 +24,7 @@ import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { HomeComponent } from './home/home.component';
 import { ShareComponent } from './share/share.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
@@ -58,7 +59,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     SimplebarAngularModule,
     CKEditorModule,
     NgbTypeaheadModule,
-    NgbDatepickerModule
+    NgbDatepickerModule,
+    NgSelectModule
   ],
   providers: [
     {

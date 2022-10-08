@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
 import { WebNavbar } from '../models/web-navbar.model';
+import { WebFooter } from '../models/web-footer.model';
 
 @Injectable({
     providedIn: 'root'
@@ -21,6 +22,13 @@ export class WebBasicService {
     getWebNavList(): Observable<WebNavbar[]> {
         let data:any;
         return this.httpClient.post<any>(ApiService.getWebNavbarURL,data);
+    }
+    saveWebFooterList(admin: WebFooter): Observable<any> {
+        return this.httpClient.post<any>(ApiService.saveWebFooterURL, admin);
+    }
+    getWebFootList(): Observable<WebFooter[]> {
+        let data:any;
+        return this.httpClient.post<any>(ApiService.getWebFooterURL,data);
     }
     // saveAppointmentList(admin: any): Observable<any> {
     //     return this.httpClient.post<any>(ApiService.saveAppointmentListURL, admin);

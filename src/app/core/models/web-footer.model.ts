@@ -1,11 +1,11 @@
-export class WebNavbar {
+export class WebFooter {
     constructor(
         public id?: number,
+        public phone?: string,
         public email?: string,
-        public contact?: string,
         public logo?: string,
-        public name?: string,
-        public color?: string,
+        public links?: string,
+        public address?: string,
         public isactive?: Boolean,
         public createddate?: Date,
         public updateddate?: Date,

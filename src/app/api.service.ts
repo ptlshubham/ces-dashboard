@@ -21,7 +21,8 @@ export class ApiService {
   public static getWebNavbarURL: string = ApiService.HOST_URL + '/admin/GetWebNavbar';
 
 
-
+  public static saveWebFooterURL: string=ApiService.HOST_URL+'/admin/SaveWebFooter';
+  public static getWebFooterURL: string = ApiService.HOST_URL + '/admin/GetWebFooter';
 
 
 

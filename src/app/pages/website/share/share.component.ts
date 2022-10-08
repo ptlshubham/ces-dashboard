@@ -1,14 +1,16 @@
-import { Component, OnInit,} from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { WebNavbar } from 'src/app/core/models/web-navbar.model';
+import { WebFooter } from 'src/app/core/models/web-footer.model';
 import { WebBasicService } from 'src/app/core/services/web-basic.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-share',
   templateUrl: './share.component.html',
   styleUrls: ['./share.component.scss'],
-  
+
 })
 export class ShareComponent implements OnInit {
 
@@ -27,12 +29,19 @@ export class ShareComponent implements OnInit {
   public webNavModel: WebNavbar = new WebNavbar;
   public webNav: WebNavbar[] = [];
 
+  public webFootModel: WebFooter = new WebFooter;
+  public webFoot: WebFooter[] = [];
+
   // Form submition
   submit!: boolean;
   submitted = false;
+  rangesubmit!: boolean;
 
   //  Validation form
   validationForm!: FormGroup;
+  rangeValidationForm!: any;
+
+  selectValue = ['Schools', 'Colleges', 'Hostels', 'Others', 'Projects', 'Home', 'About', 'History', 'Management', 'Gallery', 'Alumni', 'Funds',];
 
 
   constructor(
@@ -43,6 +52,7 @@ export class ShareComponent implements OnInit {
 
   ngOnInit(): void {
     this.getWebNavbarList();
+    this.getWebFooterList();
 
     /**
      * BreadCrumb Set
@@ -57,9 +67,18 @@ export class ShareComponent implements OnInit {
       number: ['', Validators.required],
       logo: ['', Validators.required],
     });
-    this.submit = false;
 
-  
+    this.rangeValidationForm = this.formBuilder.group({
+      phone: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+      links: ['', [Validators.required]],
+      logo: ['', [Validators.required]],
+    });
+    this.submit = false;
+    this.rangesubmit = false;
+
+
   }
   get f() { return this.validationForm.controls; }
 
@@ -72,8 +91,15 @@ export class ShareComponent implements OnInit {
     this.webNavModel.logo = this.validationForm.value.logo;
     debugger
     this.webBasicService.saveWebNavbarList(this.webNavModel).subscribe((data: any) => {
-      if(data == 'SUCESS'){
-        alert('data added sucessfully');
+      if (data == 'SUCESS') {
+        Swal.fire(
+          {
+            position: 'top-end',
+            icon: 'success',
+            title: 'Navbar Data added sucessfully!',
+            showConfirmButton: false,
+            timer: 1500,
+          });
         this.getWebNavbarList();
       }
     })
@@ -82,18 +108,66 @@ export class ShareComponent implements OnInit {
     }
 
   }
-  getWebNavbarList() {
+  get range() {
+    return this.rangeValidationForm.controls;
+  }
+  saveWebFooterDetails() {
+    this.rangesubmit = true;
+
+    this.webFootModel.phone = this.rangeValidationForm.value.phone;
+    this.webFootModel.email = this.rangeValidationForm.value.email;
+    this.webFootModel.address = this.rangeValidationForm.value.address;
+    this.webFootModel.links = this.rangeValidationForm.value.links;
+    this.webFootModel.logo = this.rangeValidationForm.value.logo;
     debugger
-    this.webBasicService.getWebNavList().subscribe((data: any) => {
-      debugger
-      if(data.length>0){
-        this.webNav = data;
+    this.webBasicService.saveWebFooterList(this.webFootModel).subscribe((data: any) => {
+      if (data == 'SUCESS') {
+        Swal.fire(
+          {
+            position: 'top-end',
+            icon: 'success',
+            title: 'Footer Data added sucessfully!',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        this.getWebFooterList();
       }
-     
-      debugger
+    })
+    if (this.rangeValidationForm.invalid) {
+      return;
+    }
+
+  }
+
+
+
+  getWebNavbarList() {
+    this.webBasicService.getWebNavList().subscribe((data: any) => {
+      if (data.length > 0) {
+        this.webNav = data;
+        debugger
+      }
+
     });
 
   }
+
+  getWebFooterList() {
+    this.webBasicService.getWebFootList().subscribe((data: any) => {
+      if (data.length > 0) {
+        this.webFoot = data;
+        debugger
+      }
+
+    });
+
+  }
+  /**
+   * range validation submit data
+   */
+  // rangeSubmit() {
+  //   this.rangesubmit = true;
+  // }
   openNavbar() {
     this.isNavbarOpen = true;
     this.isFooterOpen = false;
