@@ -53,6 +53,7 @@ export class ShareComponent implements OnInit {
   ngOnInit(): void {
     this.getWebNavbarList();
     this.getWebFooterList();
+    this.webNavModel.color = '#5156be'
 
     /**
      * BreadCrumb Set
@@ -85,26 +86,28 @@ export class ShareComponent implements OnInit {
   saveWebNavbarDetails() {
     this.submitted = true;
 
-    this.webNavModel.name = this.validationForm.value.name;
-    this.webNavModel.email = this.validationForm.value.email;
-    this.webNavModel.contact = this.validationForm.value.number;
-    this.webNavModel.logo = this.validationForm.value.logo;
-    debugger
-    this.webBasicService.saveWebNavbarList(this.webNavModel).subscribe((data: any) => {
-      if (data == 'SUCESS') {
-        Swal.fire(
-          {
-            position: 'top-end',
-            icon: 'success',
-            title: 'Navbar Data added sucessfully!',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        this.getWebNavbarList();
-      }
-    })
     if (this.validationForm.invalid) {
-      return;
+      this.webNavModel.name = this.validationForm.value.name;
+      this.webNavModel.email = this.validationForm.value.email;
+      this.webNavModel.contact = this.validationForm.value.number;
+      this.webNavModel.logo = this.validationForm.value.logo;
+      
+      if (this.webNavModel.name != "" && this.webNavModel.email != "" && this.webNavModel.contact != "") {
+        this.webBasicService.saveWebNavbarList(this.webNavModel).subscribe((data: any) => {
+          if (data == 'SUCESS') {
+            Swal.fire(
+              {
+                position: 'top-end',
+                icon: 'success',
+                title: 'Navbar Data added sucessfully!',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            this.getWebNavbarList();
+          }
+        })
+      }
+
     }
 
   }
@@ -119,20 +122,23 @@ export class ShareComponent implements OnInit {
     this.webFootModel.address = this.rangeValidationForm.value.address;
     this.webFootModel.links = this.rangeValidationForm.value.links;
     this.webFootModel.logo = this.rangeValidationForm.value.logo;
-    debugger
-    this.webBasicService.saveWebFooterList(this.webFootModel).subscribe((data: any) => {
-      if (data == 'SUCESS') {
-        Swal.fire(
-          {
-            position: 'top-end',
-            icon: 'success',
-            title: 'Footer Data added sucessfully!',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        this.getWebFooterList();
-      }
-    })
+    if (this.rangeValidationForm.valid) {
+      debugger
+      this.webBasicService.saveWebFooterList(this.webFootModel).subscribe((data: any) => {
+        if (data == 'SUCESS') {
+          Swal.fire(
+            {
+              position: 'top-end',
+              icon: 'success',
+              title: 'Footer Data added sucessfully!',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          this.getWebFooterList();
+        }
+      })
+    }
+
     if (this.rangeValidationForm.invalid) {
       return;
     }

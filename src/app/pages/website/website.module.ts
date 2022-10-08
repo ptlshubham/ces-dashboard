@@ -17,8 +17,6 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { NgbDropdownModule, NgbNavModule, NgbPaginationModule, NgbTypeaheadModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimplebarAngularModule } from 'simplebar-angular';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
@@ -38,9 +36,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 @NgModule({
   declarations: [
-
-    NavbarComponent,
-    FooterComponent,
     HomeComponent,
     ShareComponent
   ],
