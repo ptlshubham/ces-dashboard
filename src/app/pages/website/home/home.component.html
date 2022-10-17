@@ -17,33 +17,40 @@
 <div class="row">
     <div class="col-xl-12">
         <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Images Upload</h2>
+            </div>
             <div class="card-body">
-                <div class="row" style="margin-bottom: 20px;">
+                <div class="row">
                     <div class="col-xl-4">
-                        <div class="btn-group" ngbDropdown>
-                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false" ngbDropdownToggle>
-                                {{selectedSchool}}<i class="mdi mdi-chevron-down"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
-                                <div *ngFor="let item of webNav">
-                                    <a class="dropdown-item" (click)="selectSchool(item.name)">{{item.name}}</a>
+                        <div class="form-group mb-3">
+                            <label>Select School/College Name</label> <br>
+                            <div class="btn-group" ngbDropdown>
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false" ngbDropdownToggle>
+                                    {{selectedSchool}}<i class="mdi mdi-chevron-down"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                                    <div *ngFor="let item of webNav">
+                                        <a class="dropdown-item" (click)="selectSchool(item.name)">{{item.name}}</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-4">
-                        <div class="btn-group" ngbDropdown>
-                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
-                                aria-expanded="false" ngbDropdownToggle >
-                                Image Position <i class="mdi mdi-chevron-down"></i>
-                           
-                            </button>
-                            
-                            <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
-                                <a class="dropdown-item" href="javascript:void(0);">Top</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Center</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Bottom</a>
+                        <div class="form-group mb-3">
+                            <label>Select Image Position</label> <br>
+                            <div class="btn-group" ngbDropdown>
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false" ngbDropdownToggle>
+                                    Image Position <i class="mdi mdi-chevron-down"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                                    <a class="dropdown-item">Top</a>
+                                    <a class="dropdown-item">Center</a>
+                                    <a class="dropdown-item">Bottom</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -59,14 +66,8 @@
                     <div class="col-xl-4 col-md-6">
                         <div class="form-group mb-3">
                             <label>Upload Slider Image</label>
-                            <div style="margin-top: 10px;">
-                                <button type="submit" class="btn btn-primary btn-sm btn-block"
-                                    (click)="fileInput.click()" style="margin-right: 7px;">Upload
-                                    Image</button>
-                                <button type="submit" class="btn btn-warning btn-sm btn-block" (click)="removeUploadedFile()">Remove
-                                    Image</button>
-                            </div>
-                            <div class="avatar-upload">
+                            
+                            <div class="avatar-upload ">
                                 <div class="avatar-edit">
                                     <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
                                         (change)="uploadFile($event)" />
@@ -75,7 +76,15 @@
                                     <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
                                     </div>
                                 </div>
-                                
+
+                            </div>
+                            <div >
+                                <button type="submit" class="btn btn-primary btn-sm btn-block"
+                                    (click)="fileInput.click()" style="margin-right: 7px;">Upload
+                                    Image</button>
+                                <button type="submit" class="btn btn-danger btn-sm btn-block"
+                                    (click)="removeUploadedFile()">Remove
+                                    Image</button>
                             </div>
                         </div>
                     </div>
@@ -84,7 +93,7 @@
                     <div class="row">
                         <div class="row justify-content-end">
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-primary btn-round">
+                                <button type="submit" class="btn btn-success btn-round">
                                     <i class="fa fa-paper-plane" aria-hidden="true"></i> Submit
                                 </button>
                             </div>
@@ -104,7 +113,6 @@
 
 <div class="row">
     <div class="col-xl-12">
-
         <div class="card">
             <div class="card-header">
                 <div class="row">
@@ -112,13 +120,13 @@
                         <h2 class="card-title">Slider Images</h2>
                     </div>
                     <div class="col-md-2">
-                        <button type="submit" class="btn btn-success btn-round">
+                        <button type="submit" class="btn btn-info btn-round">
                             <i class="fas fa-eye" aria-hidden="true"></i> Preview
                         </button>
                     </div>
                     <div class="col-md-3">
                         <div class="btn-group" ngbDropdown>
-                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
                                 aria-expanded="false" ngbDropdownToggle>
                                 {{selectedSchool}}<i class="mdi mdi-chevron-down"></i>
                             </button>
