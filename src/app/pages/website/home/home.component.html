@@ -44,29 +44,21 @@
                             <div class="btn-group" ngbDropdown>
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
                                     aria-expanded="false" ngbDropdownToggle>
-                                    Image Position <i class="mdi mdi-chevron-down"></i>
+                                    {{selectedPosition}} <i class="mdi mdi-chevron-down"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
-                                    <a class="dropdown-item">Top</a>
-                                    <a class="dropdown-item">Center</a>
-                                    <a class="dropdown-item">Bottom</a>
+                                    <div *ngFor="let item of positionImage">
+                                        <a class="dropdown-item"
+                                            (click)="selectImagePosition (item.position)">{{item.position}}</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-xl-4">
-                        <div style="text-align:center">
-                            <div [innerHtml]='msg' *ngIf="msg" class="btn btn-info" style="color: red;"></div>
-                            <div><img [src]="url" *ngIf="url" style="width: 200px;"></div>
-                            <p>
-                                <input class="custom-file-input" type="file" (change)="selectFile($event)">
-                            </p>
-                        </div>
-                    </div> -->
                     <div class="col-xl-4 col-md-6">
                         <div class="form-group mb-3">
                             <label>Upload Slider Image</label>
-                            
+
                             <div class="avatar-upload ">
                                 <div class="avatar-edit">
                                     <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
@@ -78,7 +70,7 @@
                                 </div>
 
                             </div>
-                            <div >
+                            <div>
                                 <button type="submit" class="btn btn-primary btn-sm btn-block"
                                     (click)="fileInput.click()" style="margin-right: 7px;">Upload
                                     Image</button>
@@ -93,7 +85,7 @@
                     <div class="row">
                         <div class="row justify-content-end">
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-success btn-round">
+                                <button type="submit" class="btn btn-success btn-round" (click)="saveWebImageUpload()">
                                     <i class="fa fa-paper-plane" aria-hidden="true"></i> Submit
                                 </button>
                             </div>

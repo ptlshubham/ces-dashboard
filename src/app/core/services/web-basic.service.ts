@@ -6,6 +6,7 @@ import { ApiService } from 'src/app/api.service';
 import { WebNavbar } from '../models/web-navbar.model';
 import { WebFooter } from '../models/web-footer.model';
 import { WebSlider } from '../models/web-slider.model';
+import { WebImageUpload } from '../models/web-image-upload';
 
 @Injectable({
     providedIn: 'root'
@@ -38,10 +39,17 @@ export class WebBasicService {
         let data:any;
         return this.httpClient.post<any>(ApiService.getWebSliderURL,data);
     }
-    uploadMaterialImage(img:any): Observable<any>{
+    uploadWebImage(img:any): Observable<any>{
         debugger
-       return this.httpClient.post<any>(ApiService.sliderimage, img);
+       return this.httpClient.post<any>(ApiService.saveWebSliderImageURL, img);
    
+    }
+    
+    getWebImageList(admin: WebImageUpload): Observable<any> {
+        return this.httpClient.post<any>(ApiService.getWebImageUploadURL,admin);
+    }
+    saveWebImageUpload(admin: WebImageUpload): Observable<any> {
+        return this.httpClient.post<any>(ApiService.saveWebImageUploadURL, admin);
     }
     
     // saveAppointmentList(admin: any): Observable<any> {

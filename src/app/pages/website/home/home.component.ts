@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { WebImageUpload } from 'src/app/core/models/web-image-upload';
 import { WebNavbar } from 'src/app/core/models/web-navbar.model';
 import { WebBasicService } from 'src/app/core/services/web-basic.service';
 import { ShareComponent } from '../share/share.component';
@@ -18,6 +19,8 @@ export class HomeComponent implements OnInit {
   url: any; //Angular 11, for stricter type
   msg = "";
   selectedSchool: any = '';
+  selectedPosition: any = '';
+
   public webNav: WebNavbar[] = [];
 
   @ViewChild('fileInput') el!: ElementRef;
@@ -26,6 +29,15 @@ export class HomeComponent implements OnInit {
   removeUpload: boolean = false;
   cardImageBase64: any;
   materialImage: any;
+
+  positionImage: any = [
+    { id: 1, position: 'Top Slider' },
+    { id: 2, position: 'Middle' },
+    { id: 3, position: 'Bottom' }
+  ]
+  public webImageUpload: WebImageUpload = new WebImageUpload;
+  public imageUploader: WebImageUpload[] = [];
+
   constructor(
     private webBasicService: WebBasicService
   ) {
@@ -33,11 +45,38 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.selectedSchool ='School/College Name'
-      this.breadCrumbItems = [
-        { label: 'Components' },
-        { label: 'Carousel', active: true }
-      ];
+    this.selectedPosition = 'Select Image Position'
+    this.selectedSchool = 'School/College Name'
+    this.breadCrumbItems = [
+      { label: 'Components' },
+      { label: 'Carousel', active: true }
+    ];
+  }
+
+
+  getWebNavbarList() {
+    this.webBasicService.getWebNavList().subscribe((data: any) => {
+      this.webNav = data;
+    });
+
+  }
+
+  selectSchool(name: any) {
+    this.webNav.forEach(element => {
+      if (element.name == name) {
+        this.selectedSchool = element.name;
+      }
+    })
+
+  }
+  selectImagePosition(position: any) {
+    this.positionImage.forEach((element: { position: any; }) => {
+      if (element.position == position) {
+        this.selectedPosition = element.position;
+
+      }
+    })
+
   }
   uploadFile(event: any) {
     let reader = new FileReader(); // HTML5 FileReader API
@@ -52,11 +91,8 @@ export class HomeComponent implements OnInit {
         this.cardImageBase64 = imgBase64Path;
         const formdata = new FormData();
         formdata.append('file', file);
-        debugger
-
-        this.webBasicService.uploadMaterialImage(formdata).subscribe((response) => {
+        this.webBasicService.uploadWebImage(formdata).subscribe((response) => {
           this.materialImage = response;
-          debugger
           //   this.isImageSaved = true;
           this.editFile = false;
           this.removeUpload = true;
@@ -76,41 +112,26 @@ export class HomeComponent implements OnInit {
     this.removeUpload = false;
 
   }
-  //selectFile(event) { //Angular 8
-  selectFile(event: any) { //Angular 11, for stricter type
-    if (!event.target.files[0] || event.target.files[0].length == 0) {
-      this.msg = 'You must select an image';
-      return;
-    }
+  saveWebImageUpload() {
+    this.webImageUpload.isactive = true;
+    this.webImageUpload.name = this.selectedSchool;
+    this.webImageUpload.position = this.selectedPosition;
+    this.webImageUpload.image = this.materialImage;
+    debugger
+    this.webBasicService.saveWebImageUpload(this.webImageUpload).subscribe((data: any) => {
+      this.imageUploader = data;
+      this.getWebImage();
 
-    var mimeType = event.target.files[0].type;
-
-    if (mimeType.match(/image\/*/) == null) {
-      this.msg = "Only images are supported";
-      return;
-    }
-
-    var reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
-
-    reader.onload = (_event) => {
-      this.msg = "";
-      this.url = reader.result;
-    }
-  }
-  getWebNavbarList() {
-    this.webBasicService.getWebNavList().subscribe((data: any) => {
-      this.webNav = data;
-    });
-
-  }
-  selectSchool(name: any) {
-    this.webNav.forEach(element => {
-      if (element.name == name) {
-        this.selectedSchool = element.name;
-      }
     })
 
   }
-  
+  getWebImage() {
+    this.webImageUpload.position = this.selectedPosition;
+    this.webImageUpload.name = this.selectedSchool;
+
+    this.webBasicService.getWebImageList(this.webImageUpload).subscribe((data: any) => {
+      this.imageUploader = data;
+      debugger
+    })
+  }
 }

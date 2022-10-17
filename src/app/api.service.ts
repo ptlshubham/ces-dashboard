@@ -17,20 +17,20 @@ export class ApiService {
       'Content-Type': 'application/json'
     })
   }
-  public static saveWebNavbarURL: string=ApiService.HOST_URL+'/admin/SaveWebNavbar';
+  public static saveWebNavbarURL: string = ApiService.HOST_URL + '/admin/SaveWebNavbar';
   public static getWebNavbarURL: string = ApiService.HOST_URL + '/admin/GetWebNavbar';
-
-
-  public static saveWebFooterURL: string=ApiService.HOST_URL+'/admin/SaveWebFooter';
+  public static saveWebFooterURL: string = ApiService.HOST_URL + '/admin/SaveWebFooter';
   public static getWebFooterURL: string = ApiService.HOST_URL + '/admin/GetWebFooter';
-
-  public static saveWebSliderURL: string=ApiService.HOST_URL+'/admin/SaveWebSlider';
+  public static saveWebSliderURL: string = ApiService.HOST_URL + '/admin/SaveWebSlider';
   public static getWebSliderURL: string = ApiService.HOST_URL + '/admin/GetWebSlider';
+  public static saveWebImageUploadURL: string = ApiService.HOST_URL + '/admin/SaveWebImageUpload';
+  public static getWebImageUploadURL: string = ApiService.HOST_URL + '/admin/GetWebImageUpload';
+  public static saveWebSliderImageURL: string = ApiService.HOST_URL + '/admin/SaveWebSliderImage';
 
 
 
-  public static sliderimage: string = ApiService.HOST_URL + '/admin/GetWebSlider';
 
+  
   public static getUserLoginURL: string = ApiService.HOST_URL + '/admin/GetUsersLogin';
   public static updateLogoutDetailsURL: string = ApiService.HOST_URL + '/admin/UpdateLogoutDetails'
   public static saveServicesListURL: string = ApiService.HOST_URL + '/admin/SaveServicesList';
