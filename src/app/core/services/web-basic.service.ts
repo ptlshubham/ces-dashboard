@@ -44,7 +44,11 @@ export class WebBasicService {
         return this.httpClient.post<any>(ApiService.saveWebSliderImageURL, img);
 
     }
+    uploadWebLogo(img: any): Observable<any> {
+        debugger
+        return this.httpClient.post<any>(ApiService.SaveWebLogoURL, img);
 
+    }
     getWebImageList(admin: WebImageUpload): Observable<any> {
         return this.httpClient.post<any>(ApiService.getWebImageUploadURL, admin);
     }
@@ -56,12 +60,12 @@ export class WebBasicService {
         return this.httpClient.post<any>(ApiService.updateActiveWebStatusURL, admin);
     }
 
-    removeWebBanners(id:any){
-        let bnr={
-          id:id
+    removeWebBanners(id: any) {
+        let bnr = {
+            id: id
         }
-        return this.httpClient.post<any>(ApiService.removeWebBannersURL,bnr);
-      }
+        return this.httpClient.post<any>(ApiService.removeWebBannersURL, bnr);
+    }
     // saveAppointmentList(admin: any): Observable<any> {
     //     return this.httpClient.post<any>(ApiService.saveAppointmentListURL, admin);
     // }

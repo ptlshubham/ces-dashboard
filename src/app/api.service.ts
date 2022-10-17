@@ -27,8 +27,7 @@ export class ApiService {
   public static getWebImageUploadURL: string = ApiService.HOST_URL + '/admin/GetWebImageUpload';
   public static saveWebSliderImageURL: string = ApiService.HOST_URL + '/admin/SaveWebSliderImage';
   public static updateActiveWebStatusURL: string = ApiService.HOST_URL + '/admin/UpdateActiveWebBanners';
-
-
+  public static SaveWebLogoURL: string = ApiService.HOST_URL + '/admin/SaveWebLogo';
 
 
   

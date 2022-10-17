@@ -108,13 +108,38 @@
                                 </div>
                             </div>
 
-                            <div class="col-xl-4 col-md-6">
+                            <!-- <div class="col-xl-4 col-md-6">
                                 <div class="form-group mb-3">
                                     <label>Upload Logo</label>
                                     <p style="color: red;">logo must be in 579*111 size</p>
                                     <dropzone type="Upload" class="dropzone" [config]="config"
                                         [(ngModel)]="webNavModel.logo">
                                     </dropzone>
+                                </div>
+                            </div> -->
+                            <div class="col-xl-4 col-md-6">
+                                <div class="form-group mb-3">
+                                    <label>Upload Logo</label>
+                                    <p style="color: red;">logo must be in 579*111 size</p>
+                                    <div class="avatar-upload ">
+                                        <div class="avatar-edit">
+                                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                                                (change)="uploadFile($event)" />
+                                        </div>
+                                        <div class="avatar-preview">
+                                            <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-primary btn-sm btn-block"
+                                            (click)="fileInput.click()" style="margin-right: 7px;">Upload
+                                            Image</button>
+                                        <button type="submit" class="btn btn-danger btn-sm btn-block"
+                                            (click)="removeUploadedFile()">Remove
+                                            Image</button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-md-6">
@@ -171,7 +196,19 @@
                                                     <td>{{item.email}}</td>
                                                     <td>{{item.contact}}</td>
                                                     <td>{{item.name}}</td>
-                                                    <td>{{item.logo}}</td>
+                                                    <!-- <td>{{item.logo}}</td> -->
+                                                    <td>
+                                                        <div class="col-lg-4">
+                                                            <div *ngIf="item.logo!=null">
+                                                                <img src="http://localhost:8100{{item.logo}}" alt=""
+                                                                    class="rounded avatar-lg">
+                                                            </div>
+                                                            <div *ngIf="item.logo==null">
+                                                                <img src="assets/images/logon.png" alt="" class="rounded avatar-lg">
+
+                                                            </div>
+                                                        </div><!-- end col -->
+                                                    </td>
                                                     <td>{{item.color}}</td>
                                                     <!-- <td>
                                                         <button type="button" class="btn btn-light btn-sm">View</button>
@@ -241,7 +278,7 @@
                             [ngClass]="{'is-invalid': rangesubmit && range.address.errors}"></textarea>
                         <div *ngIf="rangesubmit && range.address.errors" class="invalid-feedback">
                             <span *ngIf="range.address.errors.required">This Field is required.</span>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -264,8 +301,7 @@
                 <div class="row">
                     <div class="row justify-content-end">
                         <div class="col-auto">
-                            <button type="submit" class="btn btn-primary btn-round"
-                                (click)="saveWebFooterDetails()">
+                            <button type="submit" class="btn btn-primary btn-round" (click)="saveWebFooterDetails()">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i> Submit
                             </button>
                         </div>

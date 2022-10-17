@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { WebNavbar } from 'src/app/core/models/web-navbar.model';
@@ -21,7 +21,13 @@ export class ShareComponent implements OnInit {
     errorReset: null,
     cancelReset: null
   };
-  
+  @ViewChild('fileInput') el!: ElementRef;
+  imageUrl: any = "assets/images/Dummy.jpg";
+  editFile: boolean = true;
+  removeUpload: boolean = false;
+  cardImageBase64: any;
+  materialImage: any;
+
   isNavbarOpen: boolean = false;
   isFooterOpen: boolean = false;
   // bread crumb items
@@ -91,8 +97,9 @@ export class ShareComponent implements OnInit {
       this.webNavModel.name = this.validationForm.value.name;
       this.webNavModel.email = this.validationForm.value.email;
       this.webNavModel.contact = this.validationForm.value.number;
-      this.webNavModel.logo = this.validationForm.value.logo;
-      
+      this.webNavModel.logo = this.materialImage;
+
+
       if (this.webNavModel.name != "" && this.webNavModel.email != "" && this.webNavModel.contact != "") {
         this.webBasicService.saveWebNavbarList(this.webNavModel).subscribe((data: any) => {
           if (data == 'SUCESS') {
@@ -174,6 +181,40 @@ export class ShareComponent implements OnInit {
   // rangeSubmit() {
   //   this.rangesubmit = true;
   // }
+  uploadFile(event: any) {
+    let reader = new FileReader(); // HTML5 FileReader API
+    let file = event.target.files[0];
+    if (event.target.files && event.target.files[0]) {
+      reader.readAsDataURL(file);
+
+      // When file uploads set it to file formcontrol
+      reader.onload = () => {
+        this.imageUrl = reader.result;
+        const imgBase64Path = reader.result;
+        this.cardImageBase64 = imgBase64Path;
+        const formdata = new FormData();
+        formdata.append('file', file);
+        this.webBasicService.uploadWebLogo(formdata).subscribe((response) => {
+          this.materialImage = response;
+          //   this.isImageSaved = true;
+          this.editFile = false;
+          this.removeUpload = true;
+        })
+      }
+      // ChangeDetectorRef since file is loading outside the zone
+      // this.cd.markForCheck();
+
+    }
+  }
+
+  // Function to remove uploaded file
+  removeUploadedFile() {
+    let newFileList = Array.from(this.el.nativeElement.files);
+    this.imageUrl = 'assets/images/Dummy.jpg';
+    this.editFile = true;
+    this.removeUpload = false;
+
+  }
   openNavbar() {
     this.isNavbarOpen = true;
     this.isFooterOpen = false;
