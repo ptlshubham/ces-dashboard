@@ -145,34 +145,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <!-- <th scope="row">{{s.id}}</th>
-                                <td>{{s.sname}}</td>
-                                <td>{{s.address}}</td>
-                                <td>{{s.quality}}</td>
-                                <td>{{s.quantity}} (mt)</td>
-                                <td>{{s.rate}} ₹</td>
-                                <td>{{s.terms}} days</td>
-                                <td>{{s.validity}}</td> -->
-                                <td>1</td>
-                                <td>MB Patel</td>
-                                <td>Top</td>
+                            <tr *ngFor="let item of imageUploader; let i=index">
+                                <th scope="row">{{item.id}}</th>
+                                <td>{{item.name}}</td>
+                                <td>{{item.position}}</td>
+                                <!-- <td>{{item.image}}</td> -->
                                 <td>
                                     <div class="col-lg-4">
                                         <div>
-                                            <img src="assets/images/users/avatar-5.jpg" alt=""
+                                            <img src="http://localhost:8100{{item.image}}" alt=""
                                                 class="rounded avatar-lg">
                                         </div>
                                     </div><!-- end col -->
                                 </td>
-                                <td>
-                                    <button class="btn btn-success" style="margin-left: 30px;">
+                                <td class="text-left">
+                                    <button class="btn btn-success" *ngIf="item.isactive" (click)="deactiveBanners(i)">
                                         Active
+                                    </button>
+                                    <button class="btn btn-danger" *ngIf="!item.isactive" (click)="activeBanners(i)">
+                                        Deactive
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-soft-danger waves-effect waves-light"><i
-                                            class="fa fa-times"></i></button>
+                                    <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm"
+                     (click)="removeBannersImage(item.id)">
+                      <i class="fa fa-times"></i>
+                    </button>
+                                    <!-- <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm"
+                                        (click)="removeBannersImage(item.id)">
+                                        <i class="fa fa-times"></i>
+                                    </button> -->
                                 </td>
 
 

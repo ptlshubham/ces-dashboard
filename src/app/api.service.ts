@@ -26,6 +26,7 @@ export class ApiService {
   public static saveWebImageUploadURL: string = ApiService.HOST_URL + '/admin/SaveWebImageUpload';
   public static getWebImageUploadURL: string = ApiService.HOST_URL + '/admin/GetWebImageUpload';
   public static saveWebSliderImageURL: string = ApiService.HOST_URL + '/admin/SaveWebSliderImage';
+  public static updateActiveWebStatusURL: string = ApiService.HOST_URL + '/admin/UpdateActiveWebBanners';
 
 
 
@@ -119,7 +120,7 @@ export class ApiService {
   public static saveWebBannersURL: string = ApiService.HOST_URL + '/admin/SaveWebBanners';
   public static getWebBannerURL: string = ApiService.HOST_URL + '/admin/GetWebBanner';
   public static removeWebBannersURL: string = ApiService.HOST_URL + '/admin/RemoveWebBanners';
-  public static updateActiveWebStatusURL: string = ApiService.HOST_URL + '/admin/UpdateActiveWebBanners';
+  // public static updateActiveWebStatusURL: string = ApiService.HOST_URL + '/admin/UpdateActiveWebBanners';
   public static saveCartListURL: string = ApiService.HOST_URL + '/admin/saveCartList';
   public static getAllCartListURL: string = ApiService.HOST_URL + '/admin/getAllCartList';
   public static removeCartDetailsURL: string = ApiService.HOST_URL + '/admin/removeCartDetails';

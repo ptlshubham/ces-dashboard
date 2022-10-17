@@ -7,6 +7,8 @@ export class WebImageUpload {
         public isactive?: Boolean,
         public createddate?: Date,
         public updateddate?: Date,
+        public index?: number
+
     ) {
 
     }

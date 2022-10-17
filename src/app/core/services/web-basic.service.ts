@@ -22,36 +22,46 @@ export class WebBasicService {
         return this.httpClient.post<any>(ApiService.saveWebNavbarURL, admin);
     }
     getWebNavList(): Observable<WebNavbar[]> {
-        let data:any;
-        return this.httpClient.post<any>(ApiService.getWebNavbarURL,data);
+        let data: any;
+        return this.httpClient.post<any>(ApiService.getWebNavbarURL, data);
     }
     saveWebFooterList(admin: WebFooter): Observable<any> {
         return this.httpClient.post<any>(ApiService.saveWebFooterURL, admin);
     }
     getWebFootList(): Observable<WebFooter[]> {
-        let data:any;
-        return this.httpClient.post<any>(ApiService.getWebFooterURL,data);
+        let data: any;
+        return this.httpClient.post<any>(ApiService.getWebFooterURL, data);
     }
     saveWebSliderList(admin: WebSlider): Observable<any> {
         return this.httpClient.post<any>(ApiService.saveWebSliderURL, admin);
     }
     getWebSlideList(): Observable<WebSlider[]> {
-        let data:any;
-        return this.httpClient.post<any>(ApiService.getWebSliderURL,data);
+        let data: any;
+        return this.httpClient.post<any>(ApiService.getWebSliderURL, data);
     }
-    uploadWebImage(img:any): Observable<any>{
+    uploadWebImage(img: any): Observable<any> {
         debugger
-       return this.httpClient.post<any>(ApiService.saveWebSliderImageURL, img);
-   
+        return this.httpClient.post<any>(ApiService.saveWebSliderImageURL, img);
+
     }
-    
+
     getWebImageList(admin: WebImageUpload): Observable<any> {
-        return this.httpClient.post<any>(ApiService.getWebImageUploadURL,admin);
+        return this.httpClient.post<any>(ApiService.getWebImageUploadURL, admin);
     }
     saveWebImageUpload(admin: WebImageUpload): Observable<any> {
         return this.httpClient.post<any>(ApiService.saveWebImageUploadURL, admin);
     }
-    
+    activeDeavctiveWebBanners(admin: WebImageUpload): Observable<any> {
+        debugger
+        return this.httpClient.post<any>(ApiService.updateActiveWebStatusURL, admin);
+    }
+
+    removeWebBanners(id:any){
+        let bnr={
+          id:id
+        }
+        return this.httpClient.post<any>(ApiService.removeWebBannersURL,bnr);
+      }
     // saveAppointmentList(admin: any): Observable<any> {
     //     return this.httpClient.post<any>(ApiService.saveAppointmentListURL, admin);
     // }

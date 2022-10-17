@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ApiService } from 'src/app/api.service';
 import { WebImageUpload } from 'src/app/core/models/web-image-upload';
 import { WebNavbar } from 'src/app/core/models/web-navbar.model';
 import { WebBasicService } from 'src/app/core/services/web-basic.service';
+import Swal from 'sweetalert2';
 import { ShareComponent } from '../share/share.component';
 
 @Component({
@@ -39,7 +41,8 @@ export class HomeComponent implements OnInit {
   public imageUploader: WebImageUpload[] = [];
 
   constructor(
-    private webBasicService: WebBasicService
+    private webBasicService: WebBasicService,
+    private apiService: ApiService
   ) {
     this.getWebNavbarList();
   }
@@ -67,6 +70,7 @@ export class HomeComponent implements OnInit {
         this.selectedSchool = element.name;
       }
     })
+    this.getWebImage();
 
   }
   selectImagePosition(position: any) {
@@ -132,6 +136,50 @@ export class HomeComponent implements OnInit {
     this.webBasicService.getWebImageList(this.webImageUpload).subscribe((data: any) => {
       this.imageUploader = data;
       debugger
+    })
+  }
+
+  removeBannersImage(id:any) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You want to delete!",
+      icon: 'warning',
+      showCancelButton: true,
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger',
+      },
+      confirmButtonText: 'Yes',
+      buttonsStyling: false
+    }).then((result) => {
+      if (result.value == true) {
+        this.webBasicService.removeWebBanners(id).subscribe((req) => {
+          
+        })
+        Swal.fire(
+          {
+            title: 'Deleted!',
+            text: 'Your banner has been deleted.',
+            icon: 'success',
+            customClass: {
+              confirmButton: "btn btn-success",
+            },
+            buttonsStyling: false
+          }
+        )
+        this.getWebImage();
+      }
+    })
+  }
+  activeBanners(ind: any) {
+    this.imageUploader[ind].isactive = true;
+    this.webBasicService.activeDeavctiveWebBanners(this.imageUploader[ind]).subscribe((req) => {
+    })
+  }
+  deactiveBanners(ind: any) {
+    this.imageUploader[ind].isactive = false;
+    this.webBasicService.activeDeavctiveWebBanners(this.imageUploader[ind]).subscribe((req) => {
+
     })
   }
 }
