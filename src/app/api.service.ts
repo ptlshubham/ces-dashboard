@@ -24,11 +24,12 @@ export class ApiService {
   public static saveWebFooterURL: string=ApiService.HOST_URL+'/admin/SaveWebFooter';
   public static getWebFooterURL: string = ApiService.HOST_URL + '/admin/GetWebFooter';
 
+  public static saveWebSliderURL: string=ApiService.HOST_URL+'/admin/SaveWebSlider';
+  public static getWebSliderURL: string = ApiService.HOST_URL + '/admin/GetWebSlider';
 
 
 
-
-
+  public static sliderimage: string = ApiService.HOST_URL + '/admin/GetWebSlider';
 
   public static getUserLoginURL: string = ApiService.HOST_URL + '/admin/GetUsersLogin';
   public static updateLogoutDetailsURL: string = ApiService.HOST_URL + '/admin/UpdateLogoutDetails'

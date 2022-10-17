@@ -21,6 +21,7 @@ export class ShareComponent implements OnInit {
     errorReset: null,
     cancelReset: null
   };
+  
   isNavbarOpen: boolean = false;
   isFooterOpen: boolean = false;
   // bread crumb items
@@ -122,8 +123,7 @@ export class ShareComponent implements OnInit {
     this.webFootModel.address = this.rangeValidationForm.value.address;
     this.webFootModel.links = this.rangeValidationForm.value.links;
     this.webFootModel.logo = this.rangeValidationForm.value.logo;
-    if (this.rangeValidationForm.valid) {
-      debugger
+    if (this.webFootModel.phone != "" && this.webFootModel.email != "" && this.webFootModel.address != "" && this.webFootModel.links != "") {
       this.webBasicService.saveWebFooterList(this.webFootModel).subscribe((data: any) => {
         if (data == 'SUCESS') {
           Swal.fire(

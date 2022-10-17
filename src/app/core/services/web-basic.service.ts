@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
 import { WebNavbar } from '../models/web-navbar.model';
 import { WebFooter } from '../models/web-footer.model';
+import { WebSlider } from '../models/web-slider.model';
 
 @Injectable({
     providedIn: 'root'
@@ -30,6 +31,19 @@ export class WebBasicService {
         let data:any;
         return this.httpClient.post<any>(ApiService.getWebFooterURL,data);
     }
+    saveWebSliderList(admin: WebSlider): Observable<any> {
+        return this.httpClient.post<any>(ApiService.saveWebSliderURL, admin);
+    }
+    getWebSlideList(): Observable<WebSlider[]> {
+        let data:any;
+        return this.httpClient.post<any>(ApiService.getWebSliderURL,data);
+    }
+    uploadMaterialImage(img:any): Observable<any>{
+        debugger
+       return this.httpClient.post<any>(ApiService.sliderimage, img);
+   
+    }
+    
     // saveAppointmentList(admin: any): Observable<any> {
     //     return this.httpClient.post<any>(ApiService.saveAppointmentListURL, admin);
     // }

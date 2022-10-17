@@ -1,115 +1,172 @@
+<!-- <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-2">
+                        <button type="button" class="btn btn-danger waves-effect waves-light" routerLink="/">
+                            <i class="bx bx-block font-size-16 align-middle bx-left-arrow-alt"></i> Back
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
 <div class="row">
     <div class="col-xl-12">
         <div class="card">
-            <!-- <div class="card-header">
-                <h4 class="card-title">With Controls</h4>
-                <p class="card-title-desc">Here's example with previous and next controls.</p>
-            </div> -->
-    
             <div class="card-body">
-                <!-- Controls carousel -->
-                <ngb-carousel [showNavigationIndicators]="showNavigationIndicators">
-                    <ng-template ngbSlide>
-                        <img src="assets/images/small/1.jpg" alt="first slide" class="d-block img-fluid">
-                    </ng-template>
-                    <ng-template ngbSlide>
-                        <img src="assets/images/small/1.jpg" alt="second slide" class="d-block img-fluid">
-                    </ng-template>
-                    <ng-template ngbSlide>
-                        <img src="assets/images/small/1.jpg" alt="third slide" class="d-block img-fluid">
-                    </ng-template>
-                </ngb-carousel>
-                <!-- End controls carousel -->
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-xl-4">
+                        <div class="btn-group" ngbDropdown>
+                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false" ngbDropdownToggle>
+                                {{selectedSchool}}<i class="mdi mdi-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                                <div *ngFor="let item of webNav">
+                                    <a class="dropdown-item" (click)="selectSchool(item.name)">{{item.name}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="btn-group" ngbDropdown>
+                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false" ngbDropdownToggle >
+                                Image Position <i class="mdi mdi-chevron-down"></i>
+                           
+                            </button>
+                            
+                            <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                                <a class="dropdown-item" href="javascript:void(0);">Top</a>
+                                <a class="dropdown-item" href="javascript:void(0);">Center</a>
+                                <a class="dropdown-item" href="javascript:void(0);">Bottom</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-xl-4">
+                        <div style="text-align:center">
+                            <div [innerHtml]='msg' *ngIf="msg" class="btn btn-info" style="color: red;"></div>
+                            <div><img [src]="url" *ngIf="url" style="width: 200px;"></div>
+                            <p>
+                                <input class="custom-file-input" type="file" (change)="selectFile($event)">
+                            </p>
+                        </div>
+                    </div> -->
+                    <div class="col-xl-4 col-md-6">
+                        <div class="form-group mb-3">
+                            <label>Upload Slider Image</label>
+                            <div style="margin-top: 10px;">
+                                <button type="submit" class="btn btn-primary btn-sm btn-block"
+                                    (click)="fileInput.click()" style="margin-right: 7px;">Upload
+                                    Image</button>
+                                <button type="submit" class="btn btn-warning btn-sm btn-block" (click)="removeUploadedFile()">Remove
+                                    Image</button>
+                            </div>
+                            <div class="avatar-upload">
+                                <div class="avatar-edit">
+                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                                        (change)="uploadFile($event)" />
+                                </div>
+                                <div class="avatar-preview">
+                                    <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="row justify-content-end">
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary btn-round">
+                                    <i class="fa fa-paper-plane" aria-hidden="true"></i> Submit
+                                </button>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-danger btn-round">
+                                    <i class="fa fa-times" aria-hidden="true"></i> Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div><!-- end card-body -->
         </div><!-- end card -->
     </div><!-- end col -->
-</div>
+</div> <!-- end row -->
+
 
 <div class="row">
-    <div class="card-body">
-        <div class="mt-4">
-            <!-- <h5 class="font-size-13 mb-2">Align Items Center</h5> -->
-            <div class="bg-soft-light p-3 text-center">
-                <div class="row align-items-center" style="min-height: 6rem;">
-                    <div class="col-sm-4">
-                        <div class="grid-example">
-                            <i class=" fas fa-eye"></i>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="grid-example mt-2 mt-sm-0">
-                            <i class=" fas fa-bullseye"></i>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="grid-example mt-2 mt-sm-0">
-                            <i class=" fas fa-crosshairs"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <div class="col-xl-12">
 
-<div class="row">
-    <div class="card-body">
-        <div class="mt-4">
-            <!-- <h5 class="font-size-13 mb-2">Align Items Center</h5> -->
-            <div class="bg-soft-light p-3 text-center">
-                <div class="row align-items-center" style="min-height: 6rem;">
-                    <div class="col-sm-6">
-                        <div>
-                            <code>col-sm-6</code>
-                        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h2 class="card-title">Slider Images</h2>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="mt-2 mt-sm-0">
-                            <code>col-sm-6</code>
-                        </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-success btn-round">
+                            <i class="fas fa-eye" aria-hidden="true"></i> Preview
+                        </button>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="card-body">
-        <div class="mt-4">
-            <!-- <h5 class="font-size-13 mb-2">Align Items Center</h5> -->
-            <div class="bg-soft-light p-3 text-center">
-                <div class="row align-items-center" style="min-height: 6rem;">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-8">
-                        <div class="mt-2 mt-sm-0" style="background-color: #f9efef;">
-                            <code>col-sm-8</code>
-                        </div>
-                    </div>
-                    <div class="col-sm-2"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row"  style="background-color: #f9efef;">
-    <div class="card-body">
-        <div class="mt-4">
-            <!-- <h5 class="font-size-13 mb-2">Align Items Center</h5> -->
-            <div class="bg-soft-light p-3 text-center">
-                <div class="row align-items-center" style="min-height: 6rem;">
-                    <div class="col-sm-8">
-                        <div class="mt-2 mt-sm-0">
-                            <code>col-sm-8</code>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="mt-2 mt-sm-0">
-                            <code>col-sm-4</code>
+                    <div class="col-md-3">
+                        <div class="btn-group" ngbDropdown>
+                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false" ngbDropdownToggle>
+                                {{selectedSchool}}<i class="mdi mdi-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                                <div *ngFor="let item of webNav">
+                                    <a class="dropdown-item" (click)="selectSchool(item.name)">{{item.name}}</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0">
 
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>School/College Name</th>
+                                <th>Image Position</th>
+                                <th>Active/Deactive</th>
+                                <th>Image</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <button class="btn btn-success" style="margin-left: 30px;">
+                                Active
+                            </button>
+
+                            <td></td>
+                            <button class="btn btn-danger" style="padding: 0px; margin-left: 15px;">
+                                <i class="fa fa-times"></i>
+                            </button>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+
+</div>
+<!-- end row -->

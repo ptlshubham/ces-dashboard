@@ -100,26 +100,6 @@ export const MENU: MenuItem[] = [
         icon: 'grid',
         subItems: [
             {
-                id: 87,
-                label: 'MENUITEMS.WEBSITE.LIST.SHARED',
-                icon: 'bx-receipt',
-                subItems: [
-                    {
-                        id: 88,
-                        label: 'MENUITEMS.WEBSITE.LIST.NAVBAR',
-                        link: '/website/navbar',
-                        parentId: 87
-                    },
-                    {
-                        id: 89,
-                        label: 'MENUITEMS.WEBSITE.LIST.FOOTER',
-                        link: '/website/footer',
-                        parentId: 87
-                    },
-                ],
-
-            },
-            {
                 id: 90,
                 label: 'MENUITEMS.WEBSITE.LIST.HOME',
                 link: '/website/home',
